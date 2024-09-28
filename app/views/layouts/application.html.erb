@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Specify the language for accessibility -->
+<head>
+    <meta charset="UTF-8"> <!-- Character set declaration -->
+    <title><%= content_for(:title) || "Doctor Patient App" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "custom" %> <!-- Include custom styles -->
+
+    <!-- JavaScript Imports -->
+    <%= javascript_importmap_tags %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.28.0/date-fns.min.js"></script>
+
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+        }
+        body {
+            padding-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <%= render 'layouts/header' %> <!-- Include the header partial -->
+    <div class="container">
+        <%= yield %> <!-- This is where your views will be rendered -->
+    </div>
+
+    <!-- Scripts for Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Import Rails UJS (Unobtrusive JavaScript) for handling DELETE method links -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll('a[data-method="delete"]');
+        links.forEach(function(link) {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm(link.dataset.confirm || "Are you sure?")) {
+              const form = document.createElement('form');
+              form.method = 'POST';
+              form.action = link.href;
+              const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+              const csrfInput = document.createElement('input');
+              csrfInput.type = 'hidden';
+              csrfInput.name = 'authenticity_token';
+              csrfInput.value = csrfToken;
+              form.appendChild(csrfInput);
+              const methodInput = document.createElement('input');
+              methodInput.type = 'hidden';
+              methodInput.name = '_method';
+              methodInput.value = 'delete';
+              form.appendChild(methodInput);
+              document.body.appendChild(form);
+              form.submit();
+            }
+          });
+        });
+      });
+    </script>
+</body>
+</html>

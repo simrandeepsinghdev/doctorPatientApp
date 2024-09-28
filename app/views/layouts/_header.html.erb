@@ -1,0 +1,32 @@
+<!-- app/views/layouts/_header.html.erb -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= root_path %>">Doctor Patient App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+        <li class="nav-item">
+          <% if current_user.role == 'doctor' %>
+            <%= link_to 'Dashboard', doctor_dashboard_path, class: 'nav-link' %>
+          <% elsif current_user.role == 'receptionist' %>
+            <%= link_to 'Dashboard', receptionist_dashboard_path, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Dashboard', root_path, class: 'nav-link' %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Patients', patients_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link', data: { confirm: "Are you sure you want to log out?" } %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Login', login_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

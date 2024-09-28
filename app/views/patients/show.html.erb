@@ -1,0 +1,33 @@
+<h1 class="text-center mb-4 mt-4">Patient Details</h1>
+
+<div class="container">
+  <div class="row justify-content-center mt-4"> <!-- Centering the details -->
+    <div class="col-md-6"> <!-- Set a width for the details -->
+      <div class="card"> <!-- Card for a better visual presentation -->
+        <div class="card-body">
+          <p class="mb-2">
+            <strong>Name:</strong>
+            <span><%= @patient.name %></span>
+          </p>
+          <p class="mb-2">
+            <strong>Age:</strong>
+            <span><%= @patient.age %></span>
+          </p>
+          <p class="mb-2">
+            <strong>Contact:</strong>
+            <span><%= @patient.contact %></span>
+          </p>
+          <p class="mb-2">
+            <strong>Address:</strong>
+            <span><%= @patient.address %></span>
+          </p>
+
+          <div class="mt-4"> <!-- Margin top for buttons -->
+            <%= link_to 'Edit', edit_patient_path(@patient), class: 'btn btn-primary' %>
+            <%= link_to 'Back to Patients', patients_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
