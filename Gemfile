@@ -16,7 +16,7 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 
-gem 'psych', '~> 4.0'
+gem 'psych', '~> 5.1'
 
 gem 'bcrypt', '~> 3.1.7'
 
