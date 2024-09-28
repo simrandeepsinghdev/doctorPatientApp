@@ -1,24 +1,38 @@
-# README
+# Doctor Patient App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application designed for managing patient registrations, appointments, and doctor interactions. The app allows receptionists to register new patients, while doctors can view their dashboards and manage appointments.
 
-Things you may want to cover:
+## Table of Contents
 
-* Ruby version
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-* System dependencies
+## Features
 
-* Configuration
+- User authentication for doctors and receptionists.
+- Dashboard for doctors to view patient statistics and appointments.
+- Dashboard for receptionists to manage patient registrations.
+- CRUD functionality for patients and appointments.
+- Responsive design using Bootstrap.
 
-* Database creation
+## Technologies Used
 
-* Database initialization
+- **Backend:** Ruby on Rails
+- **Frontend:** HTML, CSS, JavaScript
+- **Database:** PostgreSQL
+- **Styling Framework:** Bootstrap
+- **Charting Library:** Chart.js
 
-* How to run the test suite
+## Installation
 
-* Services (job queues, cache servers, search engines, etc.)
+To set up the project locally, follow these steps:
 
-* Deployment instructions
+1. **Clone the repository:**
 
-* ...
+   ```bash
+   git clone https://github.com/yourusername/DoctorPatientApp.git
+   cd DoctorPatientApp
